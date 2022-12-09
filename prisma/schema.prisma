@@ -16,10 +16,20 @@ model User {
   password   String       @db.VarChar(255)
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
+  Session    Session[]
   Credential Credential[]
   Network    Network[]
 
   @@map("users")
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Credential {
