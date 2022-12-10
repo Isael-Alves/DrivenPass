@@ -14,3 +14,13 @@ export async function createUser(params: Partial<User> = {}): Promise<User> {
     },
   });
 }
+
+export async function findUserByEmail(email: string) {
+  const user = prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
+
+  return user;
+}
