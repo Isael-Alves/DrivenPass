@@ -16,9 +16,31 @@ async function getCredentialByTitle(userId: number, title: string) {
   });
 }
 
+async function getCredential(userId: number, credencialId: number) {
+  return prisma.credential.findFirst({
+    where: {
+      userId,
+      id: credencialId
+    }
+  });
+}
+
+async function getAllCredential(userId: number) {
+  return prisma.credential.findMany({
+    where: { userId }
+  });
+}
+
+async function deleteCredential(credentialId: number) {
+  return prisma.credential.delete({ where: { id: credentialId } });
+}
+
 const credentialRepository = {
   insertCredential,
-  getCredentialByTitle
+  getCredentialByTitle,
+  getCredential,
+  getAllCredential,
+  deleteCredential
 };
 
 export default credentialRepository;

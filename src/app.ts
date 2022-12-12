@@ -7,7 +7,6 @@ import { loadEnv, connectDb, disconnectDB } from "@/config";
 
 loadEnv();
 
-import { handleApplicationErrors } from "@/middlewares";
 import {
   usersRouter,
   authenticationRouter,
@@ -21,8 +20,7 @@ app
   .get("/health", (_req, res) => res.send("OK!"))
   .use("/users", usersRouter)
   .use("/auth", authenticationRouter)
-  .use("/credentials", credentialsRouter)
-  .use(handleApplicationErrors);
+  .use("/credentials", credentialsRouter);
 
 export function init(): Promise<Express> {
   connectDb();
