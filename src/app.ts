@@ -11,6 +11,7 @@ import { handleApplicationErrors } from "@/middlewares";
 import {
   usersRouter,
   authenticationRouter,
+  credentialsRouter,
 } from "@/routers";
 
 const app = express();
@@ -20,6 +21,7 @@ app
   .get("/health", (_req, res) => res.send("OK!"))
   .use("/users", usersRouter)
   .use("/auth", authenticationRouter)
+  .use("/credentials", credentialsRouter)
   .use(handleApplicationErrors);
 
 export function init(): Promise<Express> {

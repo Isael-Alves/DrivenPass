@@ -42,6 +42,7 @@ model Credential {
 
   userId Int
 
+  @@unique([title, userId])
   @@map("credentials")
 }
 
