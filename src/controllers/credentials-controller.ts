@@ -19,7 +19,6 @@ export async function createCredentials(req: AuthenticatedRequest, res: Response
 export async function getCredential(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
   const { credentialId } = req.params;
-
   if (!credentialId) {
     throw unprocessableEntity();
   }

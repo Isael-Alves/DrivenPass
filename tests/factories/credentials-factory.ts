@@ -1,10 +1,9 @@
 import { prisma } from "@/config";
-import { CreatCredentialType } from "@/protocols";
 import faker from "@faker-js/faker";
 import { encrypt } from "@/utils/criptrUtils";
-import { User } from "@prisma/client";
+import { Credential, User } from "@prisma/client";
 
-export async function createCredential(user: User ): Promise<CreatCredentialType> {
+export async function createCredential(user: User ): Promise<Credential> {
   const newPassword = encrypt(user.password);
   return prisma.credential.create({
     data: {

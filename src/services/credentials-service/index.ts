@@ -2,7 +2,6 @@ import { conflictError, notFoundError } from "@/errors";
 import { CreatCredentialType } from "@/protocols";
 import credentialRepository from "@/repositories/credentials-repository";
 import { decrypt, encrypt } from "@/utils/criptrUtils";
-import { User } from "@prisma/client";
 
 async function createCredential(userId: number, credential: CreatCredentialType) {
   const checkExistingCredential = await credentialRepository.getCredentialByTitle(userId, credential.title);

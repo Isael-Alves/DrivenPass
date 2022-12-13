@@ -1,4 +1,4 @@
-import { Credential } from "@prisma/client";
+import { Credential, Wifi } from "@prisma/client";
 
 export type ApplicationError = {
   name: string;
@@ -6,6 +6,8 @@ export type ApplicationError = {
 };
 
 export type CreatCredentialType = Omit<Credential, "id">
+
+export type CreatWifiType = Omit<Wifi, "id">
 
 export type RequestError = {
   status: number,
